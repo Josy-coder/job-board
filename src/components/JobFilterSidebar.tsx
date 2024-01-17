@@ -3,9 +3,25 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import Select from "./ui/select";
 import prisma from "@/lib/prisma";
+import { Button } from "./ui/button";
+import { jobFilterSchema } from "@/lib/validation";
+import { redirect } from "next/navigation";
 
 async function filterJobs(formData: FormData) {
     "use server";
+    const values = Object.fromEntries(formData.entries());
+
+    const {query, type, location, remote} = jobFilterSchema.parse(values);
+
+    const searchParams = new URLSearchParams({
+        ...(query && {query: query.trim()}),
+        ...(type && {type}),
+        ...(location && {location}),
+        ...(remote && {remote: "true"}),
+
+    });
+
+    redirect(`/?${searchParams.toString()}`);
 }
 
 export default async function JobFilterSidebar() {
@@ -30,7 +46,7 @@ export default async function JobFilterSidebar() {
                     <div className="flex flex-col gap-2">
                         <Label htmlFor="type">Type</Label>
                         <Select id="type" name="type" defaultValue="">
-                            <option value="" >All locations</option>
+                            <option value="" >All Types</option>
                                 {jobTypes.map((type) => (
                                     <option key={type} value={type}>
                                         {type}
@@ -53,7 +69,18 @@ export default async function JobFilterSidebar() {
                         </Select>
 
                     </div>
-
+                    <div className="flex items-center gap-2">
+                        <Input
+                            id="remote"
+                            name="remote"
+                            type="checkbox"
+                            className="scale-125 accent-black"
+                        />
+                        <Label htmlFor="remote" >Remote Jobs</Label>
+                    </div>
+                    <Button type="submit" className="w-full">
+                        Filter Jobs
+                    </Button>
                 </div>
             </form>
         </aside>
