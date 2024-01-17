@@ -44,6 +44,11 @@ export default async function JobResults({filterValues: {query, type, location, 
         {jobs.map(job => (
           <JobListItem job={job} key={job.id} />
         ))}
+        {jobs.length === 0 && (
+            <p className='m-auto text-center'>
+                No jobs found. Adjust search filters.
+            </p>
+        )}
       </div>
     )
 }

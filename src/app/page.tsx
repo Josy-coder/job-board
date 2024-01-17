@@ -1,6 +1,7 @@
 import JobFilterSidebar from "@/components/JobFilterSidebar";
 import JobResults from "@/components/JobResults";
 import H1 from "@/components/ui/h1";
+import { jobFilterValues } from "@/lib/validation";
 
 
 
@@ -16,7 +17,7 @@ interface PageProps {
 export default async function Home({
   searchParams: {query, type, location, remote}
 } : PageProps) {
-const filterValues: JobFilterValues = {
+const filterValues: jobFilterValues = {
   query,
   type,
   location,
@@ -33,7 +34,7 @@ const filterValues: JobFilterValues = {
       </div>
       <section className='flex flex-col md:flex-row gap-4 '>
         <JobFilterSidebar />
-        <JobResults />
+        <JobResults filterValues={filterValues} />
       </section>
     </main>
   );
