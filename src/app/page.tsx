@@ -25,7 +25,7 @@ const filterValues: jobFilterValues = {
 }
 
   return (
-    <main className='max-w-5xl m-auto px-3 my-10 spacey10'>
+    <main className='m-auto my-10 max-w-5xl space-y-10 px-3'>
       <div className='space-y-5 text-center'>
         <H1>Developer Jobs</H1>
         <p className='text-muted-foreground'>

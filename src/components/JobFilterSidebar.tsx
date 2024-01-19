@@ -35,39 +35,34 @@ export default async function JobFilterSidebar() {
         )) as string[]
 
     return (
-        <aside className='md:w-[260px] p-4 sticky top-0 h-fit bg-background border rounded-lg'>
+        <aside className="sticky top-0 h-fit rounded-lg border bg-background p-4 md:w-[260px]">
             <form action={filterJobs}>
-                <div className='space-y-4'>
+                <div className="space-y-4">
                     <div className="flex flex-col gap-2">
                         <Label htmlFor="query">Search</Label>
                         <Input id="query" name="query" placeholder="Title, company, etc..." />
                     </div>
-
                     <div className="flex flex-col gap-2">
                         <Label htmlFor="type">Type</Label>
                         <Select id="type" name="type" defaultValue="">
-                            <option value="" >All Types</option>
-                                {jobTypes.map((type) => (
-                                    <option key={type} value={type}>
-                                        {type}
-                                    </option>
-
-                                ))}
+                            <option value="">All types</option>
+                            {jobTypes.map((type) => (
+                                <option key={type} value={type}>
+                                    {type}
+                                </option>
+                            ))}
                         </Select>
                     </div>
-
                     <div className="flex flex-col gap-2">
                         <Label htmlFor="location">Location</Label>
                         <Select id="location" name="location" defaultValue="">
-                            <option value="" >All locations</option>
+                            <option value="">All locations</option>
                             {distinctLocation.map((location) => (
                                 <option key={location} value={location}>
                                     {location}
                                 </option>
-
                             ))}
                         </Select>
-
                     </div>
                     <div className="flex items-center gap-2">
                         <Input
@@ -76,13 +71,14 @@ export default async function JobFilterSidebar() {
                             type="checkbox"
                             className="scale-125 accent-black"
                         />
-                        <Label htmlFor="remote" >Remote Jobs</Label>
+                        <Label htmlFor="remote">Remote jobs</Label>
                     </div>
                     <Button type="submit" className="w-full">
-                        Filter Jobs
+                        Filter jobs
                     </Button>
                 </div>
             </form>
         </aside>
     )
 }
+
