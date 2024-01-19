@@ -9,7 +9,9 @@ interface JobResultsProps {
     filterValues: jobFilterValues,
 }
 export default async function JobResults({filterValues: {query, type, location, remote}}: JobResultsProps) {
-    const searchString = query?.split("").filter(word => word.length > 0)
+    const searchString = query
+    ?.split("")
+    .filter(word => word.length > 0)
     .join(" & ");
 
     const searchFilter: Prisma.JobWhereInput = searchString ?
