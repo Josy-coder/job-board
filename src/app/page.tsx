@@ -7,10 +7,10 @@ import { jobFilterValues } from "@/lib/validation";
 
 interface PageProps {
   searchParams: {
-    query?: string;
-    type?: string;
-    location?: string;
-    remote?: string;
+    query?: string,
+    type?: string,
+    location?: string,
+    remote?: string,
   };
 }
 

@@ -10,7 +10,7 @@ interface JobResultsProps {
 }
 export default async function JobResults({filterValues: {query, type, location, remote}}: JobResultsProps) {
     const searchString = query
-    ?.split("")
+    ?.split(" ")
     .filter(word => word.length > 0)
     .join(" & ");
 
@@ -22,7 +22,7 @@ export default async function JobResults({filterValues: {query, type, location, 
             {type: { search: searchString }},
             {locationType: { search: searchString }},
             {location: { search: searchString }},
-        ]
+        ],
     }
     : {};
 
@@ -38,7 +38,7 @@ export default async function JobResults({filterValues: {query, type, location, 
 
     const jobs = await prisma.job.findMany({
         where,
-        orderBy : { createdAt: "desc" }
+        orderBy : { createdAt: "desc" },
       })
 
     return (
@@ -52,5 +52,5 @@ export default async function JobResults({filterValues: {query, type, location, 
             </p>
         )}
       </div>
-    )
+    );
 }
