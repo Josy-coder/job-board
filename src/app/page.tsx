@@ -15,7 +15,7 @@ interface PageProps {
   };
 }
 
-function getTitle({query, type, location, remote}: JobFilterValues) {
+function getTitle({query, type, location, remote}: jobFilterValues) {
   const titlePrefix = query
   ? `${query} jobs`
   : type
