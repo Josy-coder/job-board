@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo.png"
+import { Button } from "./ui/button";
 
 export default function Navbar() {
     return (
@@ -16,7 +17,9 @@ export default function Navbar() {
                     />
                     <span className="text-xl font-bold tracking-tight">Job Board</span>
                 </Link>
-                <div>Element 2</div>
+                <Button asChild>
+                    <Link href="/jobs/new">Post a job</Link>
+                </Button>
             </nav>
         </header>
     )
