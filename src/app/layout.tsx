@@ -7,9 +7,12 @@ import Footer from '@/components/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Job Board',
+  title:{
+    default: "Job Board",
+    template: "%s | Job Board",
+  },
   description: 'Job Board Application in NextJS',
-}
+};
 
 export default function RootLayout({
   children,
