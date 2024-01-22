@@ -33,7 +33,7 @@ const filterValues: jobFilterValues = {
         </p>
       </div>
       <section className='flex flex-col md:flex-row gap-4 '>
-        <JobFilterSidebar />
+        <JobFilterSidebar defaultValues={filterValues} />
         <JobResults filterValues={filterValues} />
       </section>
     </main>
